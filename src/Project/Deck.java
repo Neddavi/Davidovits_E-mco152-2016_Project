@@ -39,7 +39,7 @@ public class Deck {
 	//doing a switch
 	cards.set(numGenerated,temp);
 	
-	}//end for	 
+	}
 	}
 	
 	public Card deal()throws EmptyException{

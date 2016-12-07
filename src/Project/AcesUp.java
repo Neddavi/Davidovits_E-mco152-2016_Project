@@ -21,9 +21,9 @@ for(int i = 0;i<stacks.length;i++){
 stacks[i] = new Stack<>();
 //deal out 4 cards
 stacks[i].push(theDeck.deal());
-}//end for
+}
 
-}//end constructor
+}
 
 public void display(){
 	System.out.println("stack 1\t\tstack2\t\tstack3\t\tstack4\t\tCards left");
