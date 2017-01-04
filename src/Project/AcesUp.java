@@ -4,7 +4,6 @@ import java.util.Scanner;
 import java.util.Stack;
 public class AcesUp{
 
-//fields
 public static Deck theDeck;
 public static Stack<Card>[]stacks;
 public static int qtyCards;
@@ -22,9 +21,7 @@ stacks[i] = new Stack<>();
 //deal out 4 cards
 stacks[i].push(theDeck.deal());
 }
-
 }
-
 public void display(){
 	System.out.println("stack 1\t\tstack2\t\tstack3\t\tstack4\t\tCards left");
 	for(int i = 0;i<stacks.length;i++){
@@ -39,7 +36,6 @@ else{
 	}//end for
 System.out.println(qtyCards);
 }
-
 public static void discard(int cardLowRank){
 //making sure user entered right stack number
 	if(!(cardLowRank > 4 || cardLowRank < 1 || 
@@ -104,8 +100,7 @@ try{
 	
 	AcesUp game = new AcesUp();
 	while(!game.gameWon()){
-	//letting the user decide when to deal out cards..
-		game.display();
+			game.display();
 		int choice = getMenu();
 	
 	switch(choice){
@@ -128,25 +123,18 @@ try{
 			System.out.println(e1.getMessage());
 		}
 	break;
-	
 	case 3:
 		System.out.println("indicate the card to move");
 		int cardToMove = keyboard.nextInt();
 		move(cardToMove);
 		break;
-
 	}//end switch	
 	}//end while loop
 System.out.println("you have won! congrats:)");
 } 
-
 catch (EmptyException e) {	
 	System.out.println(e.getMessage());
-
-
 }//end catch
-
-
 }//end main
 public static int getMenu(){
 Scanner keyboard = new Scanner(System.in);
@@ -156,5 +144,4 @@ System.out.println("1. If there are 2 cards of same suit showing, "
 int choice = keyboard.nextInt();
 return choice;
 }
-
 }//end class
