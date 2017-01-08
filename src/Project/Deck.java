@@ -38,13 +38,10 @@ public class Deck {
 	//putting index card into the random
 	//doing a switch
 	cards.set(numGenerated,temp);
-	
 	}
 	}
-	
 	public Card deal()throws EmptyException{
 				if(!isEmpty()){
-	
 			return cards.remove(cards.size()-1);		
 		}
 			else{

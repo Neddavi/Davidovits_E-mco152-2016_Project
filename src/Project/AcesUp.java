@@ -17,7 +17,7 @@ stacks =(Stack<Card>[])new Stack[4];
 qtyCards = theDeck.getSize();
 
 for(int i = 0;i<stacks.length;i++){
-stacks[i] = new Stack<>();
+stacks[i] = new Stack<Card>();
 //deal out 4 cards
 stacks[i].push(theDeck.deal());
 }
@@ -72,7 +72,7 @@ public static void discard(int cardLowRank){
 }
 
 public static void move(int cardToMove){
-	for(int i =0;i<stacks.length;i++){
+	for(int i = 0;i<stacks.length;i++){
 		if(stacks[i].isEmpty()){
 			Card tempCard;
 			tempCard = stacks[cardToMove -1].peek();
@@ -81,11 +81,10 @@ public static void move(int cardToMove){
 			//using the break, to get out of the loop, otherwise will cont to loop
 		break;
 		}
-	}
+		}
 }
-
 public boolean gameWon(){
-	if(stacks == null && theDeck.isEmpty()){
+	if(qtyCards == 0){
 		//the stack and deck are both empty!winner!
 		return true;
 	}
@@ -113,15 +112,18 @@ try{
 		break;
 
 	case 2:
-		try{
+		//try{
 		for(int i =0;i<stacks.length;i++){
 		//deal out 4 cards
+		//*/
 		stacks[i].push(theDeck.deal());
 		}//end for
-		}//end try
+		//}//end try
+		/*
 		catch(EmptyException e1){
 			System.out.println(e1.getMessage());
 		}
+		*/
 	break;
 	case 3:
 		System.out.println("indicate the card to move");
