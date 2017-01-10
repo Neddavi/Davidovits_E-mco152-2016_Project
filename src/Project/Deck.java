@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.Random;
 
 public class Deck {
-
+//implements IDeck{
 	//fields
 	public ArrayList<Card>cards;
 	public Rank rank;
@@ -25,7 +25,6 @@ public class Deck {
 	}//end constructor
 
 	public void shuffle(){
-		//invoking the random class
 	Random shuffle = new Random();
 	//holding the number that was just generated
 	for(int i =0;i<cards.size();i++){
@@ -58,4 +57,4 @@ public class Deck {
 	public int getSize(){
 		return cards.size();
 	}
-	}//end class
+}

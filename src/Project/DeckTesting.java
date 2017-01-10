@@ -12,23 +12,23 @@ public class DeckTesting {
 	//private static	ArrayList<Card> cards;
 	private static MockDeck theDeck;
 	private static MockDeck newDeck;
+
 	@Before
 	public void setUp(){
 		System.out.println("Before");
 		theDeck = new MockDeck();
-		newDeck = new MockDeck();
+		
 	}
+	
 	@Test(expected = EmptyException.class)
 	public void DealOnEmptyArrayListThrowsEmptyException() throws EmptyException
 	{
 		theDeck.deal();
 	}
 	@Test
-	public void ReturnCardWhenDeal() throws EmptyException{
-		Card card;
-		card =new Card(Rank.Five,Suit.SPADES,Color.BLACK);
+	public void ReturnTopCardWhenDeal() throws EmptyException{
 		theDeck.addToCards();
-		assertEquals(card,theDeck.deal());
+		assertEquals(theDeck.getCard(theDeck.getSize()-1),theDeck.deal());
 	}
 	@Test
 	public void ReturnTrueIfIsEmpty(){
@@ -42,41 +42,30 @@ public class DeckTesting {
 		assertFalse(theDeck.isEmpty());
 	}
 	@Test
-	public void Return0WhenCallGetSize(){
+	public void Return0WhenCallGetSizeOnEmptyArray(){
 		assertEquals(0,theDeck.getSize());
 	}
 	@Test
-	public void Return2WhenCallGetSize(){
+	public void Return4WhenCallGetSize(){
 		theDeck.addToCards();
-		assertEquals(2,theDeck.getSize());
+		assertEquals(4,theDeck.getSize());
 	}
 	@Test
 	public void WillSwitchPlacesAfterShuffle (){
-	
-	
-		newDeck.addToCards();
 		theDeck.addToCards();
-		System.out.println("new deck " + newDeck.getArrayListCards());
-		System.out.println("the deck " + theDeck.getArrayListCards());
-		
-		assertEquals(theDeck.getArrayListCards(),newDeck.getArrayListCards());
-		 /*
+		MockDeck copyDeck = new MockDeck(theDeck);
+		assertSame(theDeck.getArrayListCards(),copyDeck.getArrayListCards());
+		//theDeck.shuffle();
 		//newDeck.shuffle();
-		assertTrue(theDeck.equals(theDeck));
-		//assertNotSame(theDeck,newDeck);
-		*/
+		//assertNotSame(theDeck.getArrayListCards(),newDeck.getArrayListCards());
 		}
 	
 	@Test
 	public void WillNotSwitchIfNoShuffle(){
-		Card notSwitched=new Card(Rank.Three,Suit.HEARTS,Color.RED);
-		Card cardSwitched= new Card(Rank.Ten,Suit.HEARTS,Color.RED);
-	equals(cardSwitched);
+	theDeck.addToCards();
+	newDeck = theDeck;
+	assertSame(theDeck.getArrayListCards(),newDeck.getArrayListCards());
+	
 	}
-	/*
-	@Test
-	public void(){
-		theDeck.deal();
-	}
-	*/
+	
 }
