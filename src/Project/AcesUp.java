@@ -2,7 +2,7 @@ package Project;
 
 import java.util.Scanner;
 import java.util.Stack;
-public class AcesUp implements{
+public class AcesUp{
 
 public static Deck theDeck;
 public static Stack<Card>[]stacks;
