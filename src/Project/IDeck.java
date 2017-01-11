@@ -1,6 +1,6 @@
 package Project;
 
-public interface IDeck {
+public interface IDeck{
 	
 	public void shuffle();
 	public int getSize();

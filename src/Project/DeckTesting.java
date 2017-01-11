@@ -1,27 +1,20 @@
 package Project;
 
-
 import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-
 import org.junit.*;
 
 public class DeckTesting {
 
-	//private static	ArrayList<Card> cards;
 	private static MockDeck theDeck;
-	private static MockDeck newDeck;
-
+	private MockDeck copyDeck;
 	@Before
 	public void setUp(){
 		System.out.println("Before");
-		theDeck = new MockDeck();
-		
+		theDeck = new MockDeck();	
 	}
 	
 	@Test(expected = EmptyException.class)
-	public void DealOnEmptyArrayListThrowsEmptyException() throws EmptyException
+	public void DealOnEmptyDeckOfCardsThrowsEmptyException() throws EmptyException
 	{
 		theDeck.deal();
 	}
@@ -46,25 +39,25 @@ public class DeckTesting {
 		assertEquals(0,theDeck.getSize());
 	}
 	@Test
-	public void Return4WhenCallGetSize(){
+	public void Return52WhenCallGetSize(){
 		theDeck.addToCards();
-		assertEquals(4,theDeck.getSize());
+		assertEquals(52,theDeck.getSize());
 	}
 	@Test
 	public void WillSwitchPlacesAfterShuffle (){
 		theDeck.addToCards();
-		MockDeck copyDeck = new MockDeck(theDeck);
-		assertSame(theDeck.getArrayListCards(),copyDeck.getArrayListCards());
-		//theDeck.shuffle();
-		//newDeck.shuffle();
-		//assertNotSame(theDeck.getArrayListCards(),newDeck.getArrayListCards());
+		 copyDeck = new MockDeck(theDeck);
+		//first ensure that the decks equal eachother before the shuffle
+		assertEquals(theDeck.getArrayListCards(),copyDeck.getArrayListCards());
+		theDeck.shuffle();
+		assertNotEquals(theDeck.getArrayListCards(),copyDeck.getArrayListCards());
 		}
 	
 	@Test
 	public void WillNotSwitchIfNoShuffle(){
 	theDeck.addToCards();
-	newDeck = theDeck;
-	assertSame(theDeck.getArrayListCards(),newDeck.getArrayListCards());
+	copyDeck = new MockDeck(theDeck);
+	assertEquals(theDeck.getArrayListCards(),copyDeck.getArrayListCards());
 	
 	}
 	
